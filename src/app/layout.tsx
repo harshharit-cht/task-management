@@ -23,9 +23,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
             <Toaster
               theme="dark"
-              richColors
-              position="top-right"
-              closeButton
+              position="bottom-right"
+              toastOptions={{
+                style: {
+                  background: "#13131f",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "#e2e8f0",
+                },
+              }}
             />
           </QueryProvider>
         </AuthSessionProvider>

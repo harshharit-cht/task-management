@@ -14,9 +14,10 @@ interface Props {
   tasks: Task[];
   projectId: string;
   members: ProjectMember[];
+  isAdmin: boolean;    
 }
 
-export function KanbanBoard({ tasks, projectId, members }: Props) {
+export function KanbanBoard({ tasks, projectId, members,isAdmin }: Props) {
   const [createStatus, setCreateStatus] = useState<TaskStatus | null>(null);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const updateTask = useUpdateTask(projectId);
@@ -77,6 +78,7 @@ export function KanbanBoard({ tasks, projectId, members }: Props) {
         onOpenChange={(v) => !v && setSelectedTask(null)}
         projectId={projectId}
         members={members}
+        isAdmin={isAdmin} 
       />
     </>
   );

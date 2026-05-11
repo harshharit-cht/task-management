@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useCreateProject } from "@/hooks/use-projects";
 import { PROJECT_COLORS } from "@/lib/utils";
 
@@ -36,7 +36,13 @@ export function CreateProjectDialog({ open, onOpenChange }: Props) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-[#13131f] border-white/10 text-white max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold">New Project</DialogTitle>
+          <DialogTitle className="text-xl font-bold">
+            New Project
+          </DialogTitle>
+
+          <DialogDescription className="text-slate-400">
+            Create a new project workspace for your team.
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 mt-2">
