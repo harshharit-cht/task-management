@@ -31,7 +31,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ pr
 
     return successResponse(member);
   } catch (err) {
-    if (err instanceof z.ZodError) return errorResponse(err.errors[0].message);
+    if (err instanceof z.ZodError) return errorResponse(err.issues[0].message);
     return errorResponse("Failed to update member role", 500);
   }
 }

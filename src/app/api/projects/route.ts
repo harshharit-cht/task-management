@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
 
     return successResponse(project, 201);
   } catch (err) {
-    if (err instanceof z.ZodError) return errorResponse(err.errors[0].message);
+    if (err instanceof z.ZodError) return errorResponse( err.issues[0].message);
     return errorResponse("Failed to create project", 500);
   }
 }

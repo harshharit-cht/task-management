@@ -84,7 +84,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ pro
 
     return successResponse(task, 201);
   } catch (err) {
-    if (err instanceof z.ZodError) return errorResponse(err.errors[0].message);
+    if (err instanceof z.ZodError) return errorResponse(err.issues[0].message);
     return errorResponse("Failed to create task", 500);
   }
 }
