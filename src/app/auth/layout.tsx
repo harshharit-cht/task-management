@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { Zap, ShieldCheck, PieChart, CheckCircle2 } from "lucide-react";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
-// src/app/auth/layout.tsx
+
 export default function AuthLayout({
     children,
 }: {
@@ -14,13 +16,14 @@ export default function AuthLayout({
                     background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
                 }}
             >
+                <BackgroundPaths />
                 {/* Animated orbs */}
-                <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] rounded-full opacity-20"
+                {/* <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] rounded-full opacity-20"
                     style={{ background: "radial-gradient(circle, #818cf8, transparent 70%)" }}
                 />
                 <div className="absolute bottom-[-50px] right-[-50px] w-[400px] h-[400px] rounded-full opacity-15"
                     style={{ background: "radial-gradient(circle, #a78bfa, transparent 70%)" }}
-                />
+                /> */}
 
                 {/* Logo */}
                 <div className="relative z-10 flex items-center gap-3">
@@ -57,18 +60,44 @@ export default function AuthLayout({
                         </p>
                     </div>
 
+
                     {/* Feature pills */}
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4 mt-10">
                         {[
-                            { icon: "⚡", text: "Real-time task tracking" },
-                            { icon: "🔐", text: "Role-based access control" },
-                            { icon: "📊", text: "Progress dashboards" },
+                            {
+                                icon: <Zap size={16} className="text-amber-400 fill-amber-400/10" />,
+                                text: "Real-time task tracking",
+                                desc: "Instant sync across all devices"
+                            },
+                            {
+                                icon: <ShieldCheck size={16} className="text-emerald-400 fill-emerald-400/10" />,
+                                text: "Enterprise-grade security",
+                                desc: "Role-based access & encryption"
+                            },
+                            {
+                                icon: <PieChart size={16} className="text-indigo-400 fill-indigo-400/10" />,
+                                text: "Advanced data analytics",
+                                desc: "Visualize team velocity & bottlenecks"
+                            },
                         ].map((f) => (
-                            <div key={f.text} className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-sm">
-                                    {f.icon}
+                            <div key={f.text} className="group flex items-center gap-4">
+                                {/* Icon Container with subtle glow */}
+                                <div className="relative">
+                                    <div className="absolute inset-0 bg-white/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <div className="relative w-10 h-10 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center shadow-2xl backdrop-blur-sm transition-transform group-hover:-translate-y-0.5">
+                                        {f.icon}
+                                    </div>
                                 </div>
-                                <span className="text-slate-300 text-sm">{f.text}</span>
+
+                                {/* Text Stack */}
+                                <div className="flex flex-col">
+                                    <span className="text-slate-200 text-sm font-semibold tracking-tight transition-colors group-hover:text-white">
+                                        {f.text}
+                                    </span>
+                                    <span className="text-slate-500 text-[11px] font-medium leading-none mt-1">
+                                        {f.desc}
+                                    </span>
+                                </div>
                             </div>
                         ))}
                     </div>
