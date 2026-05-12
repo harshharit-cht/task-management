@@ -1,23 +1,26 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { AuthSessionProvider } from "@/components/providers/session-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
 // import { Toaster } from "@/components/ui/toaster";
 import { Toaster } from "@/components/ui/sonner"
 
-const geist = Geist({ subsets: ["latin"] });
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
 
 export const metadata: Metadata = {
-  title: "TaskFlow — Team Task Manager",
+  title: "Ethara Flow",
   description: "Manage projects and tasks with your team",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={geist.className}>
+      <body className={manrope.className}>
         <AuthSessionProvider>
           <QueryProvider>
             {children}
